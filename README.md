@@ -22,6 +22,11 @@ This extension contributes the following settings:
 
 Initial release of code-stats-vscode
 
+### 1.0.1
+
+Added the missing github information to package.json
+Added the .vsix installation package as well.
+
 ### For more information
 
 * [Github repository](https://github.com/riussi/code-stats-vscode)

@@ -1,17 +1,27 @@
 # Change Log
 All notable changes to the "code-stats-vscode" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [Unreleased]
+### Added
 
-### 1.0.0
+### Changed
 
-Initial release of code-stats-vscode
+## [1.0.3] - 2017-03-18
+### Added
+Added license for the logo from Nicd.
 
-### 1.0.1
+### Changed
+Fixed an accumulation of xp bug
 
+## [1.0.2] - 2017-03-17
+### Added
+Added a logo for the extension.
+
+## [1.0.1] - 2017-03-17
+### Added
 Added the missing github information to package.json
 Added the .vsix installation package as well.
 
-### 1.0.2
-
-Added a logo for the extension.
+## [1.0.0] - 2017-03-17
+### Added
+Initial release of code-stats-vscode

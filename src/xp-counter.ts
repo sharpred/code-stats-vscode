@@ -53,7 +53,6 @@ export class XpCounter {
         if (range === null || range === undefined ) {
             return 0;
         }
-        // console.log(`L${range.start.line}C${range.start.character} to L${range.end.line}C${range.end.character}`);
         if (range.start.line === range.end.line) {
             if (range.start.character === range.end.character) {
                 return 1;
@@ -61,7 +60,7 @@ export class XpCounter {
                 return range.end.character - range.start.character;
             }
         }
-        // todo detect multiline changes
+        // multiline changes, copy/paste count as 1XP
         return 1;
     }
 
@@ -83,7 +82,6 @@ export class XpCounter {
         this.updateTimeout = setTimeout(() => {
             this.api.sendUpdate(this.pulse);
         }, this.UPDATE_DELAY);
-
     }
 
     private updateStatusBar(show: boolean, changeCount: string): void {

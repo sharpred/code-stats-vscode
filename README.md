@@ -18,18 +18,24 @@ This extension contributes the following settings:
 
 ## Release Notes
 
-### 1.0.0
+### 1.0.3
 
-Initial release of code-stats-vscode
+Fixed an accumulation of XP bug.
+Added a license for the logo.
+
+### 1.0.2
+
+Added a logo for the extension.
 
 ### 1.0.1
 
 Added the missing github information to package.json
 Added the .vsix installation package as well.
 
-### 1.0.2
+### 1.0.0
 
-Added a logo for the extension.
+Initial release of code-stats-vscode
+
 
 ### For more information
 

@@ -41,6 +41,9 @@ export class CodeStatsAPI {
             .then( (response) => {
                 console.log(response);
             })
+            .then ( () => {
+                pulse.reset();
+            })
             .catch((error) => {
                 console.log(error);
             });

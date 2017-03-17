@@ -27,6 +27,10 @@ Initial release of code-stats-vscode
 Added the missing github information to package.json
 Added the .vsix installation package as well.
 
+### 1.0.2
+
+Added a logo for the extension.
+
 ### For more information
 
 * [Github repository](https://github.com/riussi/code-stats-vscode)

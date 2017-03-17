@@ -1,16 +1,31 @@
-import { Disposable, workspace, window, StatusBarItem, TextDocument, StatusBarAlignment, TextDocumentChangeEvent, Range } from "vscode";
+// tslint:disable-next-line:max-line-length
+import { Disposable, workspace, window, StatusBarItem, TextDocument, StatusBarAlignment, TextDocumentChangeEvent, Range, WorkspaceConfiguration } from "vscode";
 import { Pulse } from "./pulse";
+import { CodeStatsAPI } from "./code-stats-api";
 
 export class XpCounter {
     private combinedDisposable: Disposable;
     private statusBarItem: StatusBarItem;
     private pulse: Pulse;
-    private languages: Array<string> = ["typescript", "javascript"];
-    private changeCount: number = 0;
+    private api: CodeStatsAPI;
+    private updateTimeout: any;
+
+    //    private languages: Array<string> = ["typescript", "javascript"];
+
+    // wait 10s after each change in the document before sending an update
+    private UPDATE_DELAY = 10000;
 
     constructor() {
-        console.log(`Supported languages for Code::Stats are ${this.languages}`);
         this.pulse = new Pulse();
+
+        let config: WorkspaceConfiguration = workspace.getConfiguration("codestats");
+        if (!config) {
+            return;
+        }
+
+        // tslint:disable-next-line:typedef
+        let apiKey = config.get("apikey");
+        this.api = new CodeStatsAPI(`${apiKey}`);
 
         if (!this.statusBarItem) {
             this.statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
@@ -43,7 +58,6 @@ export class XpCounter {
             if (range.start.character === range.end.character) {
                 return 1;
             } else {
-                console.log(`L${range.start.line}C${range.start.character} to L${range.end.line}C${range.end.character}`);
                 return range.end.character - range.start.character;
             }
         }
@@ -52,20 +66,38 @@ export class XpCounter {
     }
 
     public updateXpCount(document: TextDocument, changeCount: number): void {
-        // only update xp if one of supported languages
+        let show: boolean;
         if (this.isSupportedLanguage(document.languageId)) {
             this.pulse.addXP(document.languageId, changeCount);
-            // this.statusBarItem.text = this.changeCount !== 1 ?
-            //    ` C::S  ${this.changeCount} Words` : "$(pencil) C::S 1 Word";
-            this.statusBarItem.text = `C::S $(pencil) ${this.pulse.getXP(document.languageId)}`;
-            this.statusBarItem.show();
+            show = true;
         } else {
+            show = false;
+        }
+        this.updateStatusBar(show, `${this.pulse.getXP(document.languageId)}`);
+
+        // each change resets the timeout so we only send updates when there is a 10s delay in updates to the document
+        if (this.updateTimeout !== null) {
+            clearTimeout(this.updateTimeout);
+        }
+
+        this.updateTimeout = setTimeout(() => {
+            this.api.sendUpdate(this.pulse);
+        }, this.UPDATE_DELAY);
+
+    }
+
+    private updateStatusBar(show: boolean, changeCount: string): void {
+        if (!show) {
             this.statusBarItem.hide();
+        } else {
+            this.statusBarItem.text = `$(pencil) C::S ${changeCount}`;
+            this.statusBarItem.show();
         }
     }
 
     private isSupportedLanguage(language: string): boolean {
         // todo: check supported languages
+        // only update xp if one of supported languages
         return true;
     }
 

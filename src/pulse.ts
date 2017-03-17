@@ -2,7 +2,6 @@ export class Pulse {
     xps: Map < string, number > ;
 
     constructor() {
-        console.log("Creating Pulse");
         this.xps = new Map < string, number > ();
     }
 
@@ -22,7 +21,13 @@ export class Pulse {
         xp += amount;
 
         this.xps.set(language, xp);
+    }
 
-        // console.log(`Added ${amount} of XP to ${language}, total is now ${xp}`);
+    public get getXPs(): Map < string, number > {
+        return this.xps;
+    }
+
+    public reset(): void {
+        this.xps = new Map < string, number > ();
     }
 }

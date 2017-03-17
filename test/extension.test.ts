@@ -1,22 +1,53 @@
-//
-// Note: This example test is leveraging the Mocha test framework.
-// Please refer to their documentation on https://mochajs.org/ for help.
-//
+import * as assert from "assert";
 
-// The module 'assert' provides assertion methods from node
-import * as assert from 'assert';
+// tslint:disable-next-line:no-unused-variable
+import * as vscode from "vscode";
+// tslint:disable-next-line:no-unused-variable
+import * as codestats from "../src/code-stats";
+import { Pulse } from "../src/pulse";
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-import * as vscode from 'vscode';
-import * as myExtension from '../src/code-stats';
+suite("code-stats-vscode extension tests", () => {
+    test("Initialized Pulse is empty", () => {
+        let pulse: Pulse = new Pulse();
+        const language: string = "typescript";
 
-// Defines a Mocha test suite to group tests of similar kind together
-suite("Extension Tests", () => {
+        let initialXP: number = pulse.getXP(language);
 
-    // Defines a Mocha unit test
-    test("Something 1", () => {
-        assert.equal(-1, [1, 2, 3].indexOf(5));
-        assert.equal(-1, [1, 2, 3].indexOf(0));
+        assert.equal(initialXP, 0);
+    });
+
+    test("Add XP to Pulse", () => {
+        let pulse: Pulse = new Pulse();
+
+        const language1: string = "typescript";
+        const language2: string = "javascript";
+        const language3: string = "coffeescript";
+        const addedXP: number = 1000;
+
+        let xp1: number = pulse.getXP(language1);
+        let xp2: number = pulse.getXP(language2);
+        let xp3: number = pulse.getXP(language3);
+        assert.equal(xp1, 0);
+        assert.equal(xp2, 0);
+        assert.equal(xp3, 0);
+
+        pulse.addXP(language1, addedXP);
+        xp1 = pulse.getXP(language1);
+        xp2 = pulse.getXP(language2);
+        xp3 = pulse.getXP(language3);
+
+        assert.equal(xp1, addedXP);
+        assert.equal(xp2, 0);
+        assert.equal(xp3, 0);
+
+        pulse.addXP(language1, addedXP);
+        pulse.addXP(language2, addedXP);
+        xp1 = pulse.getXP(language1);
+        xp2 = pulse.getXP(language2);
+        xp3 = pulse.getXP(language3);
+
+        assert.equal(xp1, 2 * addedXP);
+        assert.equal(xp2, addedXP);
+        assert.equal(xp3, 0);
     });
 });

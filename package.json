@@ -11,14 +11,11 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:codestats.sayHello"
+        "*"
     ],
     "main": "./out/src/code-stats",
     "contributes": {
-        "commands": [{
-            "command": "codestats.sayHello",
-            "title": "Code::Stats"
-        }]
+        "commands": []
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",

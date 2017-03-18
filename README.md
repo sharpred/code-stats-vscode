@@ -18,6 +18,10 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+### 1.0.5
+
+Changed language names to reflect the ones already used in Code::Stats.
+
 ### 1.0.4
 
 Added a manual mapping to natural language language names.

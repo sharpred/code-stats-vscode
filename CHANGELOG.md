@@ -6,6 +6,11 @@ All notable changes to the "code-stats-vscode" extension will be documented in t
 
 ### Changed
 
+
+## [1.0.5] - 2017-03-18
+### Changed
+Changed language names to reflect the ones already used in Code::Stats.
+
 ## [1.0.4] - 2017-03-18
 ### Added
 Added a manual mapping to natural language language names.

@@ -6,6 +6,10 @@ All notable changes to the "code-stats-vscode" extension will be documented in t
 
 ### Changed
 
+## [1.0.4] - 2017-03-18
+### Added
+Added a manual mapping to natural language language names.
+
 ## [1.0.3] - 2017-03-18
 ### Added
 Added license for the logo from Nicd.

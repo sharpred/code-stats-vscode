@@ -1,6 +1,6 @@
 
 import { Pulse } from "./pulse";
-import { getISOTimestamp } from "./utils";
+import { getISOTimestamp, getLanguageName } from "./utils";
 import * as axios from "axios";
 
 export class CodeStatsAPI {
@@ -30,8 +30,9 @@ export class CodeStatsAPI {
         const data = new ApiJSON(new Date());
 
         for (let lang of pulse.xps.keys()) {
+            let languageName: string = getLanguageName(lang);
             let xp: number = pulse.getXP(lang);
-           data.xps.push(new ApiXP(lang, xp));
+            data.xps.push(new ApiXP(languageName, xp));
         }
 
         let json: string = JSON.stringify(data);

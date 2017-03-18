@@ -18,6 +18,10 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+### 1.0.4
+
+Added a manual mapping to natural language language names.
+
 ### 1.0.3
 
 Fixed an accumulation of XP bug.

@@ -18,3 +18,68 @@ export function getISOTimestamp(date: Date): string {
         prefix + pad(offset / 60) +
         pad(offset % 60);
 }
+
+export function getLanguageName(langId: string): string {
+    // currently supported language ids in vscode as of 2017-03-18
+    let languageNames: { [key:string]: string; } = {
+        "plaintext": "Plain text",
+        "Log": "Log",
+        "bat": "bat",
+        "clojure": "Clojure",
+        "coffeescript": "CoffeeScript",
+        "c": "C",
+        "cpp": "C++",
+        "csharp": "C#",
+        "css": "CSS",
+        "diff": "Diff",
+        "dockerfile": "Docker",
+        "fsharpcss": "F#",
+        "git-commit": "Git",
+        "git-rebase": "Git",
+        "go": "Go",
+        "groovy": "Groovy",
+        "handlebars": "Handlebars",
+        "hlsl": "HLSL",
+        "html": "HTML",
+        "ini": ".ini",
+        "properties": ".properties",
+        "java": "Java",
+        "javascriptreact": "JavaScript (React)",
+        "javascript": "JavaScript",
+        "jsx-tags": "JavaScript (JSX)",
+        "json": "JSON",
+        "less": "CSS (LESS)",
+        "lua": "Lua",
+        "makefile": "Makefile",
+        "markdown": "Markdown",
+        "objective-c": "Objective-C",
+        "perl": "Perl",
+        "perl6": "Perl 6",
+        "php": "PHP",
+        "powershell": "PowerShell",
+        "jade": "Jade",
+        "python": "Python",
+        "r": "R",
+        "razor": "Razor",
+        "ruby": "Ruby",
+        "rust": "Rust",
+        "scss": "CSS (SCSS)",
+        "shaderlab": "Shaderlab",
+        "shellscript": "Shell script",
+        "sql": "SQL",
+        "swift": "Swift",
+        "typescript": "TypeScript",
+        "typescriptreact": "TypeScript (React)",
+        "vb": "Visual Basic",
+        "xml": "XML",
+        "xsl": "XSL",
+        "yaml": "YAML"
+    };
+
+    let languageName: string = languageNames[langId];
+
+    if (languageName === null || languageName === undefined) {
+        return "Unknown";
+    }
+    return languageName;
+}

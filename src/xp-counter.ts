@@ -18,6 +18,14 @@ export class XpCounter {
     constructor() {
         this.pulse = new Pulse();
 
+        /*
+        let allLanguages = languages.getLanguages().then(
+            (result => {
+                console.log(JSON.stringify(result));
+            })
+        );
+        */
+
         let config: WorkspaceConfiguration = workspace.getConfiguration("codestats");
         if (!config) {
             return;

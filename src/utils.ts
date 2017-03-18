@@ -24,7 +24,7 @@ export function getLanguageName(langId: string): string {
     let languageNames: { [key:string]: string; } = {
         "plaintext": "Plain text",
         "Log": "Log",
-        "bat": "bat",
+        "bat": "Batch",
         "clojure": "Clojure",
         "coffeescript": "CoffeeScript",
         "c": "C",
@@ -41,14 +41,14 @@ export function getLanguageName(langId: string): string {
         "handlebars": "Handlebars",
         "hlsl": "HLSL",
         "html": "HTML",
-        "ini": ".ini",
-        "properties": ".properties",
+        "ini": "Ini",
+        "properties": "Properties",
         "java": "Java",
         "javascriptreact": "JavaScript (React)",
         "javascript": "JavaScript",
         "jsx-tags": "JavaScript (JSX)",
         "json": "JSON",
-        "less": "CSS (LESS)",
+        "less": "LESS",
         "lua": "Lua",
         "makefile": "Makefile",
         "markdown": "Markdown",
@@ -57,15 +57,15 @@ export function getLanguageName(langId: string): string {
         "perl6": "Perl 6",
         "php": "PHP",
         "powershell": "PowerShell",
-        "jade": "Jade",
+        "jade": "Pug",
         "python": "Python",
         "r": "R",
         "razor": "Razor",
         "ruby": "Ruby",
         "rust": "Rust",
-        "scss": "CSS (SCSS)",
+        "scss": "SCSS",
         "shaderlab": "Shaderlab",
-        "shellscript": "Shell script",
+        "shellscript": "Shell Script",
         "sql": "SQL",
         "swift": "Swift",
         "typescript": "TypeScript",
@@ -79,7 +79,7 @@ export function getLanguageName(langId: string): string {
     let languageName: string = languageNames[langId];
 
     if (languageName === null || languageName === undefined) {
-        return "Unknown";
+        return "Plain text";
     }
     return languageName;
 }

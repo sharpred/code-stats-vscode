@@ -33,6 +33,8 @@ export function getLanguageName(langId: string): string {
         "css": "CSS",
         "diff": "Diff",
         "dockerfile": "Docker",
+        "elixir": "Elixir",
+        "elm": "Elm",
         "fsharpcss": "F#",
         "git-commit": "Git",
         "git-rebase": "Git",
@@ -79,7 +81,7 @@ export function getLanguageName(langId: string): string {
     let languageName: string = languageNames[langId];
 
     if (languageName === null || languageName === undefined) {
-        return "Plain text";
+        return langId;
     }
     return languageName;
 }

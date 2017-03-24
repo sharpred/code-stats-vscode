@@ -18,6 +18,11 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+### 1.0.6
+
+Changed to return just the langId if not found in the mapped languages names.
+Added Elm and Elixir to the mapped names.
+
 ### 1.0.5
 
 Changed language names to reflect the ones already used in Code::Stats.

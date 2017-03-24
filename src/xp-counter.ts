@@ -18,7 +18,7 @@ export class XpCounter {
     constructor() {
         this.pulse = new Pulse();
 
-        /*
+        /* // print out supported language names
         let allLanguages = languages.getLanguages().then(
             (result => {
                 console.log(JSON.stringify(result));
